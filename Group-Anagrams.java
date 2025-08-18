@@ -4,16 +4,19 @@ class Solution {
         Map<String, List<String>> map = new HashMap<>();
 
         for(String s: strs){
-            int[] key = new int[26];
-
-            for(char c: s.toCharArray()){
-                key[c - 'a']++;
+            int[] charArray = new int[26];
+            for(int i=0; i<s.length(); i++){
+                charArray[s.charAt(i) - 'a']++;
             }
 
-            String keyString = Arrays.toString(key);
+            String key = Arrays.toString(charArray);
 
-            map.putIfAbsent(keyString, new ArrayList<>());
-            map.get(keyString).add(s);
+            if(!map.containsKey(key)){
+                map.put(key, new ArrayList<String>());
+            }
+
+            map.get(key).add(s);
+
         }
 
         return new ArrayList<>(map.values());
