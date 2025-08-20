@@ -1,27 +1,30 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
 
-        int n = nums.length;
-        int[] leftArray = new int[n];
+        int[] result = new int[nums.length];
+        result[0] = 1;
+        for(int i=1; i<nums.length; i++){
 
-        int[] rightArray = new int[n];
-
-        leftArray[0] =1;
-
-        for(int i=1; i<n; i++){
-            leftArray[i] = leftArray[i-1]* nums[i-1];
+            result[i]= nums[i-1]*result[i-1];
         }
 
-        rightArray[n-1]=1;
-        for(int i=n-2; i>=0; i--){
-            rightArray[i]=rightArray[i+1]*nums[i+1];
+        // for(int i=nums.length-2; i>=0; i--){
+        //     right[i]= right[i+1] * nums[i+1];
+        // }
+
+        // int result[] = new int[nums.length];
+        // for(int i=0; i<nums.length; i++){
+        //     result[i] = left[i]* right[i];
+        // }
+
+        int position =1;
+
+        for(int i=nums.length-1;i>=0; i--){
+            result[i] *= position;
+            position *= nums[i];
         }
 
-        for(int i=0;i<n; i++){
-            leftArray[i]= leftArray[i]*rightArray[i];
-        }
-
-        return leftArray;
+        return result;
         
     }
 }
