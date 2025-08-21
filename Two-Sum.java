@@ -8,10 +8,11 @@ class Solution {
             if(map.containsKey(diff)){
                 return new int[]{i, map.get(diff)};
             }
+
             map.put(nums[i], i);
         }
+        
 
         return new int[]{};
-        
     }
 }
