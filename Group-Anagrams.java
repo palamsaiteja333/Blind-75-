@@ -5,14 +5,16 @@ class Solution {
 
         for(String s: strs){
             int[] charArray = new int[26];
-            for(int i=0; i<s.length(); i++){
+
+            for(int i=0; i<s.length();i++){
                 charArray[s.charAt(i) - 'a']++;
+
             }
 
             String key = Arrays.toString(charArray);
 
             if(!map.containsKey(key)){
-                map.put(key, new ArrayList<String>());
+                map.put(key, new ArrayList<>());
             }
 
             map.get(key).add(s);
