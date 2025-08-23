@@ -5,14 +5,13 @@ class Solution {
             return false;
         }
 
-        int[] charArray = new int[26];
+        int charArray[] = new int[26];
 
-        for(int i=0; i<s.length(); i++){
-
+        for(int i=0; i<s.length();i++){
             charArray[s.charAt(i) - 'a']++;
-            charArray[t.charAt(i)  - 'a']--;
+            charArray[t.charAt(i) - 'a']--;
         }
-
+        
         for(int n: charArray){
             if(n>0){
                 return false;
@@ -20,6 +19,5 @@ class Solution {
         }
 
         return true;
-        
     }
 }
